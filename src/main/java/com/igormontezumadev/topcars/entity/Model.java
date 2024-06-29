@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String valor_fipe;
+    private BigDecimalgit a valor_fipe;
 
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = false)

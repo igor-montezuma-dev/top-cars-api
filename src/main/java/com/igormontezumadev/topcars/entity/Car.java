@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -20,7 +21,7 @@ public class Car {
     private String nome_modelo;
     private String cor;
     private String ano;
-    private Double valor;
+    private BigDecimal valor;
     private String combustivel;
     private Integer num_portas;
     private Timestamp timestamp_cadastro;
