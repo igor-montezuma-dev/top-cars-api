@@ -1,5 +1,6 @@
 package com.igormontezumadev.topcars.handlers;
 
+
 public class BadRequestException extends RuntimeException {
     public BadRequestException(String message) {
         super(message);

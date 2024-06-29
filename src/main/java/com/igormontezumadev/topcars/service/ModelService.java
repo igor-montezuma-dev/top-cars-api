@@ -1,13 +1,15 @@
 package com.igormontezumadev.topcars.service;
 
+import com.igormontezumadev.topcars.dto.ModelDTO;
 import com.igormontezumadev.topcars.entity.Brand;
 import com.igormontezumadev.topcars.entity.Model;
+import com.igormontezumadev.topcars.handlers.BrandNotFoundException;
+import com.igormontezumadev.topcars.handlers.ModelNotFoundException;
 import com.igormontezumadev.topcars.repositories.BrandRepository;
 import com.igormontezumadev.topcars.repositories.ModelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ModelService {
@@ -27,15 +29,27 @@ public class ModelService {
         return modelRepository.save(model);
     }
 
+    public Model createModel(ModelDTO modelDTO) {
+        Brand brand = getBrand(modelDTO.getMarcaId());
+        if (brand == null) throw new BrandNotFoundException("Marca não encontrada");
+
+        Model model = new Model();
+        model.setBrand(brand);
+        model.setNome(modelDTO.getNome());
+        model.setValor_fipe(modelDTO.getValorFipe());
+
+        return modelRepository.save(model);
+    }
+
     public void delete(Long id) {
         modelRepository.deleteById(id);
     }
 
-    public Optional<Brand> findBrand(Long marcaId) {
-        return brandRepository.findById(marcaId);
+    public Brand getBrand(Long brandId) {
+        return brandRepository.findById(brandId).orElseThrow(() -> new BrandNotFoundException("Marca não encontrada"));
     }
 
-    public  Model getModel(Long modelId) {
-        return modelRepository.findById(modelId).orElseThrow(() -> new RuntimeException("Model not found"));
+    public Model getModel(Long modelId) {
+        return modelRepository.findById(modelId).orElseThrow(() -> new ModelNotFoundException("Modelo não encontrado"));
     }
 }

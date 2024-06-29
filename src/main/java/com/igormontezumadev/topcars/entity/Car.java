@@ -20,7 +20,7 @@ public class Car {
     private Long id;
     private String nome_modelo;
     private String cor;
-    private String ano;
+    private Integer ano;
     private BigDecimal valor;
     private String combustivel;
     private Integer num_portas;

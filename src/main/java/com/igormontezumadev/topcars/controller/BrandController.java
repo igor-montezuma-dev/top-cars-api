@@ -35,6 +35,16 @@ public class BrandController {
         return new ResponseEntity<>(newBrand, HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Brand> getBrand(@PathVariable Long id) {
+        try {
+            Brand brand = brandService.getBrand(id);
+            return new ResponseEntity<>(brand, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBrand(@PathVariable Long id) {
         brandService.delete(id);

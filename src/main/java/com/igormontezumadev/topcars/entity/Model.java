@@ -20,7 +20,7 @@ public class Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private BigDecimalgit a valor_fipe;
+    private BigDecimal valor_fipe;
 
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = false)

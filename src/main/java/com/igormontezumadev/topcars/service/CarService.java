@@ -34,7 +34,7 @@ public class CarService {
         car.setNome_modelo(model.getNome());
         car.setCor(carDTO.getCor());
         car.setAno(carDTO.getAno());
-        car.setValor(carDTO.getValor());
+            car.setValor(carDTO.getValor());
         car.setCombustivel(carDTO.getCombustivel());
         car.setNum_portas(carDTO.getNumPortas());
         car.setTimestamp_cadastro(Timestamp.from(Instant.now()));

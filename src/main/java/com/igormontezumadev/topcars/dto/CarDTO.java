@@ -10,7 +10,7 @@ public class CarDTO {
     private Long modeloId;
     private String nomeModelo;
     private String cor;
-    private String ano;
+    private Integer ano;
     private BigDecimal valor;
     private String combustivel;
     private Integer numPortas;

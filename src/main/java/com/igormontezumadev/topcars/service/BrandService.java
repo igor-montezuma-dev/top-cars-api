@@ -1,4 +1,5 @@
 package com.igormontezumadev.topcars.service;
+
 import com.igormontezumadev.topcars.entity.Brand;
 import com.igormontezumadev.topcars.repositories.BrandRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class BrandService {
 
     public Brand save(Brand brand) {
         return brandRepository.save(brand);
+    }
+
+    public Brand getBrand(Long id) {
+        return brandRepository.findById(id).orElseThrow(() -> new RuntimeException("Marca não encontrada"));
     }
 
     public void delete(Long id) {
