@@ -1,5 +1,6 @@
 package com.igormontezumadev.topcars.controller;
 
+import com.igormontezumadev.topcars.dto.CarDTO;
 import com.igormontezumadev.topcars.entity.Car;
 import com.igormontezumadev.topcars.entity.Model;
 import com.igormontezumadev.topcars.service.CarService;
@@ -35,10 +36,8 @@ public class CarController {
     }
 
     @PostMapping
-    public ResponseEntity<Car> createCar(@RequestBody Car car, @RequestParam Long modelId) {
-        Model model = modelService.getModel(modelId);
-        car.setModel(model);
-        Car newCar = carService.save(car);
+    public ResponseEntity<Car> createCar(@RequestBody CarDTO carDTO) {
+        Car newCar = carService.createCar(carDTO);
         return new ResponseEntity<>(newCar, HttpStatus.CREATED);
     }
 

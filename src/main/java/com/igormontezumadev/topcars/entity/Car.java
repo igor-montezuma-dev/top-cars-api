@@ -17,14 +17,13 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String nome_modelo;
     private String cor;
-    private Date ano;
+    private String ano;
     private Double valor;
     private String combustivel;
     private Integer num_portas;
     private Timestamp timestamp_cadastro;
-
 
 
     @ManyToOne

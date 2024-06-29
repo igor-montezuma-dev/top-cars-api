@@ -25,8 +25,6 @@ public class Model {
     @JoinColumn(name = "marca_id", nullable = false)
     private Brand brand;
 
-    @OneToMany(mappedBy = "model")
-    private List<Car> cars;
 
 
 }
