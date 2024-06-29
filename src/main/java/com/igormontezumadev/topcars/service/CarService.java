@@ -1,7 +1,9 @@
 package com.igormontezumadev.topcars.service;
 
 import com.igormontezumadev.topcars.entity.Car;
+import com.igormontezumadev.topcars.entity.Model;
 import com.igormontezumadev.topcars.repositories.CarRepository;
+import com.igormontezumadev.topcars.repositories.ModelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +11,11 @@ import java.util.List;
 @Service
 public class CarService {
     private final CarRepository carRepository;
+    private final ModelRepository modelRepository;
 
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, ModelRepository modelRepository) {
         this.carRepository = carRepository;
+        this.modelRepository = modelRepository;
     }
 
     public List<Car> findAll() {
@@ -24,5 +28,9 @@ public class CarService {
 
     public void delete(Long id) {
         carRepository.deleteById(id);
+    }
+
+    public Model getModel(Long modelId) {
+        return modelRepository.findById(modelId).orElseThrow(() -> new RuntimeException("Model not found"));
     }
 }

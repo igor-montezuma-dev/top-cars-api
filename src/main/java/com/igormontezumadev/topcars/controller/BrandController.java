@@ -2,6 +2,8 @@ package com.igormontezumadev.topcars.controller;
 
 import com.igormontezumadev.topcars.entity.Brand;
 import com.igormontezumadev.topcars.service.BrandService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,17 +24,20 @@ public class BrandController {
     }
 
     @GetMapping
-    public List<Brand> getAllBrands() {
-        return brandService.findAll();
+    public ResponseEntity<List<Brand>> getAllBrands() {
+        List<Brand> brands = brandService.findAll();
+        return new ResponseEntity<>(brands, HttpStatus.OK);
     }
 
     @PostMapping
-    public Brand createBrand(@RequestBody Brand brand) {
-        return brandService.save(brand);
+    public ResponseEntity<Brand> createBrand(@RequestBody Brand brand) {
+        Brand newBrand = brandService.save(brand);
+        return new ResponseEntity<>(newBrand, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBrand(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBrand(@PathVariable Long id) {
         brandService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
