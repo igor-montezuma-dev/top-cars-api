@@ -3,6 +3,7 @@ package com.igormontezumadev.topcars.service;
 import com.igormontezumadev.topcars.dto.CarDTO;
 import com.igormontezumadev.topcars.entity.Car;
 import com.igormontezumadev.topcars.entity.Model;
+import com.igormontezumadev.topcars.handlers.NotFoundException;
 import com.igormontezumadev.topcars.repositories.CarRepository;
 import com.igormontezumadev.topcars.repositories.ModelRepository;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,6 @@ public class CarService {
     }
 
     public Model getModel(Long modelId) {
-        return modelRepository.findById(modelId).orElseThrow(() -> new RuntimeException("Model not found"));
+        return modelRepository.findById(modelId).orElseThrow(() ->  new NotFoundException("Modelo não encontrado"));
     }
 }

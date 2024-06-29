@@ -1,12 +1,10 @@
 package com.igormontezumadev.topcars.controller;
 
 import com.igormontezumadev.topcars.entity.ErrorResponse;
-import com.igormontezumadev.topcars.handlers.BrandNotFoundException;
+import com.igormontezumadev.topcars.handlers.NotFoundException;
 import com.igormontezumadev.topcars.handlers.InvalidModelException;
 import com.igormontezumadev.topcars.handlers.ModelNotFoundException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,8 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionsController {
 
-    @ExceptionHandler(BrandNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleBrandNotFoundException(BrandNotFoundException ex) {
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleBrandNotFoundException(NotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }

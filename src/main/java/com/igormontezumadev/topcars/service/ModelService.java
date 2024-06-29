@@ -3,7 +3,7 @@ package com.igormontezumadev.topcars.service;
 import com.igormontezumadev.topcars.dto.ModelDTO;
 import com.igormontezumadev.topcars.entity.Brand;
 import com.igormontezumadev.topcars.entity.Model;
-import com.igormontezumadev.topcars.handlers.BrandNotFoundException;
+import com.igormontezumadev.topcars.handlers.NotFoundException;
 import com.igormontezumadev.topcars.handlers.ModelNotFoundException;
 import com.igormontezumadev.topcars.repositories.BrandRepository;
 import com.igormontezumadev.topcars.repositories.ModelRepository;
@@ -31,7 +31,7 @@ public class ModelService {
 
     public Model createModel(ModelDTO modelDTO) {
         Brand brand = getBrand(modelDTO.getMarcaId());
-        if (brand == null) throw new BrandNotFoundException("Marca não encontrada");
+        if (brand == null) throw new NotFoundException("Marca não encontrada");
 
         Model model = new Model();
         model.setBrand(brand);
@@ -46,7 +46,7 @@ public class ModelService {
     }
 
     public Brand getBrand(Long brandId) {
-        return brandRepository.findById(brandId).orElseThrow(() -> new BrandNotFoundException("Marca não encontrada"));
+        return brandRepository.findById(brandId).orElseThrow(() -> new NotFoundException("Marca não encontrada"));
     }
 
     public Model getModel(Long modelId) {
