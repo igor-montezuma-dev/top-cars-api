@@ -19,7 +19,7 @@ Este é um projeto Java Spring Boot que fornece uma API para gerenciamento de ca
 - Maven
 - PostgreSQL (Hibernate)
 - Docker
-- 
+  
 ## Pré-requisitos
 
 - JDK 17 ou superior
