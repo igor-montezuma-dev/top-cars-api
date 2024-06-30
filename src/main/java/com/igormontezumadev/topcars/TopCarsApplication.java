@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         info = @Info(
                 title = "Top Cars API",
                 version = "1.0",
-                description = "Top Cars API"
+                description = "Api para gerenciamento de carros. CRUD de carros, marcas e modelos."
         )
 )
 public class TopCarsApplication {
