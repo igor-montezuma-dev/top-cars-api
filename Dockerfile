@@ -2,7 +2,7 @@ FROM ubuntu:latest AS build
 
 RUN apt get update
 RUN apt get install -y openjdk-17-jdk -y
-COPY . .
+COPY src/main/java/com/igormontezumadev/topcars .
 
 RUN apt-get install maven -y
 RUN mvn clean install
