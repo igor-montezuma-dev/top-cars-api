@@ -1,5 +1,6 @@
 package com.igormontezumadev.topcars.service;
 
+import com.igormontezumadev.topcars.dto.BrandDTO;
 import com.igormontezumadev.topcars.entity.Brand;
 import com.igormontezumadev.topcars.repositories.BrandRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,12 @@ public class BrandService {
     }
 
     public Brand save(Brand brand) {
+        return brandRepository.save(brand);
+    }
+
+    public Brand createBrand(BrandDTO brandDTO) {
+        Brand brand = new Brand();
+        brand.setNome_marca(brandDTO.getNome_marca());
         return brandRepository.save(brand);
     }
 

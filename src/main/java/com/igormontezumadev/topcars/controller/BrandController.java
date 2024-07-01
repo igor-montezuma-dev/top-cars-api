@@ -1,6 +1,9 @@
 package com.igormontezumadev.topcars.controller;
 
+import com.igormontezumadev.topcars.dto.BrandDTO;
+import com.igormontezumadev.topcars.dto.ModelDTO;
 import com.igormontezumadev.topcars.entity.Brand;
+import com.igormontezumadev.topcars.entity.Model;
 import com.igormontezumadev.topcars.service.BrandService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +32,15 @@ public class BrandController {
         return new ResponseEntity<>(brands, HttpStatus.OK);
     }
 
+//    @PostMapping
+//    public ResponseEntity<Brand> createBrand(@RequestBody Brand brand) {
+//        Brand newBrand = brandService.save(brand);
+//        return new ResponseEntity<>(newBrand, HttpStatus.CREATED);
+//    }
+
     @PostMapping
-    public ResponseEntity<Brand> createBrand(@RequestBody Brand brand) {
-        Brand newBrand = brandService.save(brand);
+    public ResponseEntity<Brand> createModel(@RequestBody BrandDTO brandDTO) {
+        Brand newBrand = brandService.createBrand(brandDTO);
         return new ResponseEntity<>(newBrand, HttpStatus.CREATED);
     }
 
