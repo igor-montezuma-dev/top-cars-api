@@ -7,6 +7,6 @@
       ports:
         - "5432:5432"
       environment:
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=123
-        - POSTGRES_DB=top-cars
+        - POSTGRES_USER=top_cars_db_user
+        - POSTGRES_PASSWORD=1zGtHTGJhjQVXfpUgduNMvfOFstlblj4
+        - POSTGRES_DB=top_cars_db
